@@ -28,6 +28,7 @@ public class Frame1 {
 	private JFrame frmLeitorDeRfid;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -58,76 +59,105 @@ public class Frame1 {
 	private void initialize() {
 		frmLeitorDeRfid = new JFrame();
 		frmLeitorDeRfid.setTitle("Leitor de RFID");
-		frmLeitorDeRfid.setBounds(100, 100, 309, 216);
+		frmLeitorDeRfid.setBounds(100, 100, 310, 387);
 		frmLeitorDeRfid.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmLeitorDeRfid.getContentPane().setLayout(null);
-		
-		JButton btnManual = new JButton("Manual");
+
+		JButton btnManual = new JButton("Ir");
 		btnManual.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			try {
-				new reader();
+				try {
+					new reader();
 
-			} catch (AlienReaderException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				} catch (AlienReaderException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		btnManual.setBackground(Color.LIGHT_GRAY);
-		btnManual.setBounds(83, 36, 108, 23);
+		btnManual.setBounds(198, 115, 63, 23);
 		frmLeitorDeRfid.getContentPane().add(btnManual);
-		
-		JButton btnAutonomo = new JButton("Aut\u00F4nomo");
+
+		JButton btnAutonomo = new JButton("Ir");
 
 		btnAutonomo.setBackground(Color.LIGHT_GRAY);
-		btnAutonomo.setBounds(83, 140, 108, 23);
+		btnAutonomo.setBounds(85, 296, 108, 23);
 		frmLeitorDeRfid.getContentPane().add(btnAutonomo);
-		
-		JLabel lblSelecioneOModo = new JLabel("Selecione o modo de leitura:");
+
+		JLabel lblSelecioneOModo = new JLabel("Modo de leitura MANUAL:");
 		lblSelecioneOModo.setFont(new Font("DialogInput", Font.BOLD, 12));
-		lblSelecioneOModo.setBounds(30, 11, 241, 14);
+		lblSelecioneOModo.setBounds(10, 118, 241, 14);
 		frmLeitorDeRfid.getContentPane().add(lblSelecioneOModo);
-		
+
 		JSeparator separator = new JSeparator();
-		separator.setBounds(10, 70, 273, 2);
+		separator.setBounds(10, 155, 273, 2);
 		frmLeitorDeRfid.getContentPane().add(separator);
-		
+
 		textField = new JTextField();
-		textField.setBounds(65, 81, 163, 20);
+		textField.setBounds(85, 225, 163, 20);
 		frmLeitorDeRfid.getContentPane().add(textField);
 		textField.setColumns(10);
-		
+
 		textField_1 = new JTextField();
-		textField_1.setBounds(65, 109, 54, 20);
+		textField_1.setBounds(85, 253, 54, 20);
 		frmLeitorDeRfid.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
-		
+
 		JLabel lblIpListen = new JLabel("IP - listen");
 		lblIpListen.setFont(new Font("Times New Roman", Font.PLAIN, 11));
-		lblIpListen.setBounds(10, 84, 46, 14);
+		lblIpListen.setBounds(30, 228, 46, 14);
 		frmLeitorDeRfid.getContentPane().add(lblIpListen);
-		
+
 		JLabel lblTempo = new JLabel("Tempo(s)");
 		lblTempo.setFont(new Font("Times New Roman", Font.PLAIN, 11));
-		lblTempo.setBounds(10, 112, 46, 14);
+		lblTempo.setBounds(30, 256, 46, 14);
 		frmLeitorDeRfid.getContentPane().add(lblTempo);
-		
+
 		JLabel lblEx = new JLabel("ex: 127.0.0.1:23");
-		lblEx.setBounds(140, 100, 88, 14);
+		lblEx.setBounds(160, 244, 88, 14);
 		frmLeitorDeRfid.getContentPane().add(lblEx);
-	
+		
+		JLabel lblDigiteOEndereo = new JLabel("Digite o endere\u00E7o do leitor:");
+		lblDigiteOEndereo.setFont(new Font("DialogInput", Font.BOLD, 12));
+		lblDigiteOEndereo.setBounds(10, 26, 241, 14);
+		frmLeitorDeRfid.getContentPane().add(lblDigiteOEndereo);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(10, 51, 163, 20);
+		frmLeitorDeRfid.getContentPane().add(textField_2);
+		
+		JLabel label = new JLabel("ex: 127.0.0.1:23");
+		label.setBounds(85, 71, 88, 14);
+		frmLeitorDeRfid.getContentPane().add(label);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setForeground(Color.BLUE);
+		separator_1.setBounds(10, 95, 273, 2);
+		frmLeitorDeRfid.getContentPane().add(separator_1);
+		
+		JLabel lblModoDeLeitura = new JLabel("Modo de leitura AUT\u00D4NOMA:");
+		lblModoDeLeitura.setFont(new Font("DialogInput", Font.BOLD, 12));
+		lblModoDeLeitura.setBounds(10, 188, 241, 14);
+		frmLeitorDeRfid.getContentPane().add(lblModoDeLeitura);
+
 		btnAutonomo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			try {
-				new listen(textField.getText(), textField_1.getText());
-				new listener(textField_1.getText());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+				try {
+					new listen(textField.getText(), textField_1.getText(), textField_2.getText());
+					new listener(textField_1.getText());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 			}
 		});
+	}
+
+	public static void maind(String[] args){
+		new Frame1();
+
 	}
 }
