@@ -32,10 +32,10 @@ public class listener implements MessageListener {
 		service.startService();
 		System.out.println("Message Listener has Started");
 
-		long runTime = 12000; // milliseconds
+		long runTime = Integer.parseInt(tempo)*1000; // milliseconds
 		long startTime = System.currentTimeMillis();
 		do {
-			Thread.sleep(12000);
+			Thread.sleep(Integer.parseInt(tempo)*1000);
 		} while(service.isRunning() && (System.currentTimeMillis()-startTime) < runTime);
 
 
