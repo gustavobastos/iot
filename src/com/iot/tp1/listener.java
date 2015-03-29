@@ -102,12 +102,6 @@ public class listener implements MessageListener {
 		lista.add("\n ---------------------------------- \n");
 	}
 
-	public static final void main(String args[]){
-		try {
-			new listener();
-		} catch (Exception e) {
-			System.out.println("Error:" + e.toString());
-		}
-	}
+
 
 } 
