@@ -30,7 +30,7 @@ public class listener implements MessageListener {
 		MessageListenerService service = new MessageListenerService(5000);
 		service.setMessageListener(this);
 		service.startService();
-		System.out.println("Message Listener has Started");
+		System.out.println("Listener iniciado!");
 
 		long runTime = Integer.parseInt(tempo)*1000; // milliseconds
 		long startTime = System.currentTimeMillis();
