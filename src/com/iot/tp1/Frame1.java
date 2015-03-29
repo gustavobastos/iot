@@ -64,17 +64,7 @@ public class Frame1 {
 		frmLeitorDeRfid.getContentPane().setLayout(null);
 
 		JButton btnManual = new JButton("Ir");
-		btnManual.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				try {
-					new reader();
-
-				} catch (AlienReaderException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		});
+		
 		btnManual.setBackground(Color.LIGHT_GRAY);
 		btnManual.setBounds(198, 115, 63, 23);
 		frmLeitorDeRfid.getContentPane().add(btnManual);
@@ -142,6 +132,19 @@ public class Frame1 {
 		lblModoDeLeitura.setBounds(10, 188, 241, 14);
 		frmLeitorDeRfid.getContentPane().add(lblModoDeLeitura);
 
+		btnManual.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					new reader(textField_2.getText());
+
+				} catch (AlienReaderException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		
 		btnAutonomo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
