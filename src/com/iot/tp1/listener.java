@@ -22,7 +22,7 @@ import com.alien.enterpriseRFID.notify.*;
 public class listener implements MessageListener {
 	int sucesso,falha;
 	ArrayList<String> lista;
-	public listener() throws Exception {
+	public listener(String tempo) throws Exception {
 
 		sucesso = 0;
 		falha = 0;
@@ -72,7 +72,7 @@ public class listener implements MessageListener {
 		JOptionPane.showMessageDialog(null, "Tentativas com Sucesso: "+sucesso);
 		JOptionPane.showMessageDialog(null, "Tentativas sem Sucesso: "+falha);
 		JOptionPane.showMessageDialog(null, "Taxa de sucesso: "+(double)(sucesso)/(sucesso+falha)+"%");
-		JOptionPane.showMessageDialog(null, "Velocidade de leitura: "+(double)(sucesso+falha)/10+" tags por segundos");
+		JOptionPane.showMessageDialog(null, "Velocidade de leitura: "+(double)(sucesso+falha)/(Integer.parseInt(tempo))+" tags por segundos");
 		System.out.println("Tentativas COM Sucesso: " + 
 				sucesso);
 		System.out.println("Tentativas SEM Sucesso: " + 
