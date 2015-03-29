@@ -29,9 +29,7 @@ public class Frame1 {
 	private JTextField textField;
 	private JTextField textField_1;
 
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -45,16 +43,12 @@ public class Frame1 {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
+
 	public Frame1() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+
 	private void initialize() {
 		frmLeitorDeRfid = new JFrame();
 		frmLeitorDeRfid.setTitle("Leitor de RFID");
@@ -123,7 +117,7 @@ public class Frame1 {
 				new listen(textField.getText(), textField_1.getText());
 				new listener();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+			
 				e.printStackTrace();
 			}
 			
