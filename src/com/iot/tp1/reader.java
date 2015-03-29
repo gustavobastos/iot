@@ -9,12 +9,12 @@ import com.alien.enterpriseRFID.*;
 
 public class reader {
 
-public  reader() throws AlienReaderException{
+public  reader(String IpR) throws AlienReaderException{
 	
 	AlienClass1Reader reader = new AlienClass1Reader();
 	
 
-	reader.setConnection("150.164.9.35", 23);
+	reader.setConnection(IpR);
 	reader.setUsername("alien");
 	reader.setPassword("password");
 	
@@ -51,12 +51,6 @@ public  reader() throws AlienReaderException{
 
 	
 	
-public static final void main(String args[]){
-	try {
-	    new reader();
-	  } catch(AlienReaderException e) {
-	    System.out.println("Error: " + e.toString());
-	  }
-	}
+
 }
 
