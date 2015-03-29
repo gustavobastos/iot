@@ -89,10 +89,10 @@ public class listener implements MessageListener {
 			falha++;
 			lista.add("No Tags\n");
 		} else {
+			sucesso++;
 			for (int i = 0; i < message.getTagCount(); i++) {
 				Tag tag = message.getTag(i);
 				System.out.println(tag.toLongString());
-				sucesso++;
 				lista.add(tag.toLongString()+"\n");
 
 
