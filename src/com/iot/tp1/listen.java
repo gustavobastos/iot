@@ -11,19 +11,19 @@ import java.net.InetAddress;
 
 public class listen implements MessageListener {
 
-	public listen(String ip, String tempo) throws Exception {
+	public listen(String ipL, String tempo, String ipR) throws Exception {
 
 		
 		
 
 
 		AlienClass1Reader reader = new AlienClass1Reader();
-		reader.setConnection("150.164.9.35", 23);
+		reader.setConnection(ipR);
 		reader.open();
 		System.out.println("Configuring Reader");
 
 
-		reader.setNotifyAddress(ip);
+		reader.setNotifyAddress(ipL);
 		reader.setNotifyFormat(AlienClass1Reader.XML_FORMAT);
 		reader.setNotifyTrigger("TrueFalse"); 
 		reader.setNotifyMode(AlienClass1Reader.ON);
