@@ -29,7 +29,6 @@ public class listen implements MessageListener {
 		reader.setNotifyMode(AlienClass1Reader.ON);
 
 		reader.autoModeReset();
-		//reader.setAutoStopTimer(1000); // esperar  por 1 segundo
 		reader.setAutoMode(AlienClass1Reader.ON);
 		
 
