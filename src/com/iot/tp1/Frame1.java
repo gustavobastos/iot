@@ -122,15 +122,14 @@ public class Frame1 {
 		label.setBounds(85, 71, 88, 14);
 		frmLeitorDeRfid.getContentPane().add(label);
 		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setForeground(Color.BLUE);
-		separator_1.setBounds(10, 95, 273, 2);
-		frmLeitorDeRfid.getContentPane().add(separator_1);
-		
 		JLabel lblModoDeLeitura = new JLabel("Modo de leitura AUT\u00D4NOMA:");
 		lblModoDeLeitura.setFont(new Font("DialogInput", Font.BOLD, 12));
 		lblModoDeLeitura.setBounds(10, 188, 241, 14);
 		frmLeitorDeRfid.getContentPane().add(lblModoDeLeitura);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(10, 96, 273, 2);
+		frmLeitorDeRfid.getContentPane().add(separator_1);
 
 		btnManual.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
