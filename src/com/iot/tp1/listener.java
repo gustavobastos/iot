@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -19,13 +20,12 @@ import com.alien.enterpriseRFID.notify.*;
 
 
 public class listener implements MessageListener {
-	int sucesso,falha,mensagensRec;
+	int sucesso,falha;
 	ArrayList<String> lista;
 	public listener() throws Exception {
 
 		sucesso = 0;
 		falha = 0;
-		mensagensRec = 0;
 		lista = new ArrayList<String>();
 		MessageListenerService service = new MessageListenerService(5000);
 		service.setMessageListener(this);
@@ -68,17 +68,21 @@ public class listener implements MessageListener {
 
 		textArea.setCaretPosition(textArea.getText().length());	
 
-		System.out.println("Tentativas com Sucesso: " + 
+		
+		JOptionPane.showMessageDialog(null, "Tentativas com Sucesso: "+sucesso);
+		JOptionPane.showMessageDialog(null, "Tentativas sem Sucesso: "+falha);
+		JOptionPane.showMessageDialog(null, "Taxa de sucesso: "+(double)(sucesso)/(sucesso+falha)+"%");
+		JOptionPane.showMessageDialog(null, "Velocidade de leitura: "+(double)(sucesso+falha)/10+" tags por segundos");
+		System.out.println("Tentativas COM Sucesso: " + 
 				sucesso);
-		System.out.println("Tentativas sem Sucesso: " + 
+		System.out.println("Tentativas SEM Sucesso: " + 
 				falha);
 
 
 	}
 
 	public void messageReceived(Message message){
-		System.out.println("\nMessage Received:");
-		mensagensRec++;
+		System.out.println("\nMessagem Recebida:");
 		lista.add("\nMessagem recebida: \n");
 		if (message.getTagCount() == 0) {
 			System.out.println("(No Tags)\n");
