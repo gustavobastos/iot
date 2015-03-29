@@ -11,7 +11,7 @@ import java.net.InetAddress;
 
 public class listen implements MessageListener {
 
-	public listen() throws Exception {
+	public listen(String ip, String tempo) throws Exception {
 
 		
 		
@@ -23,17 +23,17 @@ public class listen implements MessageListener {
 		System.out.println("Configuring Reader");
 
 
-		reader.setNotifyAddress("187.20.205.43:5000");
-		reader.setNotifyFormat(AlienClass1Reader.XML_FORMAT); // Make sure service can decode it.
-		reader.setNotifyTrigger("TrueFalse"); // Notify whether there's a tag or not
+		reader.setNotifyAddress(ip);
+		reader.setNotifyFormat(AlienClass1Reader.XML_FORMAT);
+		reader.setNotifyTrigger("TrueFalse"); 
 		reader.setNotifyMode(AlienClass1Reader.ON);
 
 		reader.autoModeReset();
-		reader.setAutoStopTimer(1000); // Read for 1 seconds
+		//reader.setAutoStopTimer(1000); // esperar  por 1 segundo
 		reader.setAutoMode(AlienClass1Reader.ON);
 		
 
-		Thread.sleep(10000);
+		Thread.sleep(Integer.parseInt(tempo)*1000);
 		reader.close();	
 
 
@@ -58,12 +58,5 @@ public class listen implements MessageListener {
 		}
 	}
 
-	public static final void main(String args[]){
-		try {
-			new listen();
-		} catch (Exception e) {
-			System.out.println("Error:" + e.toString());
-		}
 
-	}
 } 
