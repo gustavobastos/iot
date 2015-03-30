@@ -122,7 +122,7 @@ public class Frame1 {
 		label.setBounds(85, 71, 88, 14);
 		frmLeitorDeRfid.getContentPane().add(label);
 		
-		JLabel lblModoDeLeitura = new JLabel("Modo de leitura AUT\u00D4NOMA:");
+		JLabel lblModoDeLeitura = new JLabel("Modo de leitura AUTON\u00D4MICO:");
 		lblModoDeLeitura.setFont(new Font("DialogInput", Font.BOLD, 12));
 		lblModoDeLeitura.setBounds(10, 188, 241, 14);
 		frmLeitorDeRfid.getContentPane().add(lblModoDeLeitura);
@@ -148,7 +148,6 @@ public class Frame1 {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					new listen(textField.getText(), textField_1.getText(), textField_2.getText());
-					new listener(textField_1.getText());
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
