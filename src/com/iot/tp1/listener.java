@@ -4,6 +4,7 @@ package tp1;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -22,12 +23,13 @@ import com.alien.enterpriseRFID.notify.*;
 public class listener implements MessageListener {
 	int sucesso,falha;
 	ArrayList<String> lista;
-	public listener(String tempo) throws Exception {
+	public listener(String tempo, String IpR) throws Exception {
 
 		sucesso = 0;
 		falha = 0;
 		lista = new ArrayList<String>();
-		MessageListenerService service = new MessageListenerService(5000);
+		String[] porta = IpR.split(":");
+		MessageListenerService service = new MessageListenerService(Integer.parseInt(porta[1]));
 		service.setMessageListener(this);
 		service.startService();
 		System.out.println("Listener iniciado!");
@@ -48,7 +50,7 @@ public class listener implements MessageListener {
 			textArea.append(lista.get(i));
 
 		}
-		
+
 		textArea.setVisible(true);
 		textArea.setBorder(BorderFactory.createLineBorder(Color.gray));
 		textArea.setLineWrap(true);
@@ -56,8 +58,8 @@ public class listener implements MessageListener {
 
 		JScrollPane scroller = new JScrollPane(textArea);
 		JScrollBar bar = new JScrollBar();
-		
-		
+
+
 		JFrame janela = new JFrame("Modo Autonomo");
 		janela.add(scroller);
 		janela.pack();
@@ -68,7 +70,7 @@ public class listener implements MessageListener {
 
 		textArea.setCaretPosition(textArea.getText().length());	
 
-		
+
 		JOptionPane.showMessageDialog(null, "Tentativas com Sucesso: "+sucesso);
 		JOptionPane.showMessageDialog(null, "Tentativas sem Sucesso: "+falha);
 		JOptionPane.showMessageDialog(null, "Taxa de sucesso: "+(double)(sucesso)/(sucesso+falha)+"%");
@@ -101,7 +103,6 @@ public class listener implements MessageListener {
 		}
 		lista.add("\n ---------------------------------- \n");
 	}
-
 
 
 } 
