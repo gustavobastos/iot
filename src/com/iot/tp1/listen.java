@@ -22,7 +22,7 @@ public class listen implements MessageListener {
 		reader.open();
 		System.out.println("Configuring Reader");
 
-
+		reader.setAutoStopTimer(1000);
 		reader.setNotifyAddress(ipL);
 		reader.setNotifyFormat(AlienClass1Reader.XML_FORMAT);
 		reader.setNotifyTrigger("TrueFalse"); 
