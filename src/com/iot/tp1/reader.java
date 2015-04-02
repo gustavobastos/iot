@@ -59,13 +59,9 @@ public  reader(String IpR) throws AlienReaderException{
 	  } else {
 	    for (int i=0; i<tagList.length; i++) {
 	      Tag tag = tagList[i];
-	      textArea.append("ID: " + tag.getTagID()+"\n" +
-                  "Discovered:" + tag.getDiscoverTime() +"\n" +
-                  "Last Seen:" + tag.getRenewTime() +"\n" +
-                  "Antenna:" + tag.getAntenna() +"\n" +
-                  "Reads:" + tag.getRenewCount()+"\n-------------------------------------------\n\n"
-                  );
+	      textArea.append("ID: " + tag.getTagID()+"\n");
 	    }
+	    textArea.append("\n----------------------------------------------------\n");
 	  }
 	  
 	  
