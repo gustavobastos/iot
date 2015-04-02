@@ -61,7 +61,7 @@ public  reader(String IpR) throws AlienReaderException{
 	      Tag tag = tagList[i];
 	      textArea.append("ID: " + tag.getTagID()+"\n");
 	    }
-	    textArea.append("\n----------------------------------------------------\n");
+	    textArea.append("------------------------------------------------------------------\n");
 	  }
 	  
 	  
