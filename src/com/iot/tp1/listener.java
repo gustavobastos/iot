@@ -1,6 +1,10 @@
 package tp1;
 
 
+
+
+
+
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +43,7 @@ public class listener implements MessageListener {
 		do {
 			Thread.sleep(Integer.parseInt(tempo)*1000);
 		} while(service.isRunning() && (System.currentTimeMillis()-startTime) < runTime);
-
+		service.stopService();
 
 
 
@@ -51,6 +55,12 @@ public class listener implements MessageListener {
 
 		}
 
+		textArea.append("Tentativas com Sucesso: "+sucesso+"\n");
+		textArea.append("Tentativas sem Sucesso: "+falha+"\n");
+		textArea.append("Taxa de sucesso: "+(double)(sucesso)/(sucesso+falha)+"%\n");
+		textArea.append("Velocidade de leitura: "+(double)(sucesso+falha)/(Integer.parseInt(tempo))+" leituras por segundos");
+		
+		
 		textArea.setVisible(true);
 		textArea.setBorder(BorderFactory.createLineBorder(Color.gray));
 		textArea.setLineWrap(true);
@@ -71,14 +81,6 @@ public class listener implements MessageListener {
 		textArea.setCaretPosition(textArea.getText().length());	
 
 
-		JOptionPane.showMessageDialog(null, "Tentativas com Sucesso: "+sucesso);
-		JOptionPane.showMessageDialog(null, "Tentativas sem Sucesso: "+falha);
-		JOptionPane.showMessageDialog(null, "Taxa de sucesso: "+(double)(sucesso)/(sucesso+falha)+"%");
-		JOptionPane.showMessageDialog(null, "Velocidade de leitura: "+(double)(sucesso+falha)/(Integer.parseInt(tempo))+" tags por segundos");
-		System.out.println("Tentativas COM Sucesso: " + 
-				sucesso);
-		System.out.println("Tentativas SEM Sucesso: " + 
-				falha);
 
 
 	}
