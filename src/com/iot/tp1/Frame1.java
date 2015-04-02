@@ -114,6 +114,7 @@ public class Frame1 {
 		frmLeitorDeRfid.getContentPane().add(lblDigiteOEndereo);
 		
 		textField_2 = new JTextField();
+		textField_2.setText("150.164.9.35:23");
 		textField_2.setColumns(10);
 		textField_2.setBounds(10, 51, 163, 20);
 		frmLeitorDeRfid.getContentPane().add(textField_2);
