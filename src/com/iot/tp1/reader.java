@@ -67,7 +67,6 @@ public  reader(String IpR, String repeticoes) throws AlienReaderException, Inter
 	      textArea.append("ID: " + tag.getTagID()+"\n");
 
 	    }
-		  Thread.sleep(1000);
 		  sucesso++;
 	    textArea.append("------------------------------------------------------------------\n");
 	  }
@@ -78,7 +77,7 @@ public  reader(String IpR, String repeticoes) throws AlienReaderException, Inter
 	  double tempo = System.currentTimeMillis() - antes;
 	  textArea.append("Leituras com sucesso: "+sucesso+"\n");
 	  textArea.append("Leituras sem sucesso: "+falha+"\n");
-	  textArea.append("velocidade de leitura: "+ (sucesso+falha)/((double)(System.currentTimeMillis() - antes)/1000)+" leituras por segundo\n");
+	  textArea.append("velocidade de leitura: "+(Double)( sucesso/((double)(System.currentTimeMillis() - antes)/1000))+" leituras por segundo\n");
 	  textArea.append("Taxa de sucesso: "+(double)(sucesso)/(sucesso+falha)+"\n");
 	
 }
