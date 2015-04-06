@@ -17,10 +17,11 @@ import com.alien.enterpriseRFID.*;
 
 public class reader {
 
+int sucesso, falha;
 
-
-public  reader(String IpR) throws AlienReaderException{
-
+public  reader(String IpR, String repeticoes) throws AlienReaderException, InterruptedException{
+	sucesso = 0;
+	falha = 0;
 	
 	AlienClass1Reader reader = new AlienClass1Reader();
 	
@@ -52,22 +53,33 @@ public  reader(String IpR) throws AlienReaderException{
   
 	
 	reader.open();
+	long antes = System.currentTimeMillis();  
 	
+	for(int j = 0; j < Integer.parseInt(repeticoes); j++ ){
 	Tag tagList[] = reader.getTagList();
 	  if (tagList == null) {
-	    textArea.append("Nenhuma tag encontrada!\n\n");
+	    falha++;
+		  textArea.append("Nenhuma tag encontrada!\n\n");
 	  } else {
-	    for (int i=0; i<tagList.length; i++) {
+		  textArea.append("------------------------------------------------------------------\n");
+		  for (int i=0; i<tagList.length; i++) {
 	      Tag tag = tagList[i];
 	      textArea.append("ID: " + tag.getTagID()+"\n");
+
 	    }
+		  Thread.sleep(1000);
+		  sucesso++;
 	    textArea.append("------------------------------------------------------------------\n");
 	  }
-	  
-	  
+
+	}
 	  reader.close();
 	  
-	  
+	  double tempo = System.currentTimeMillis() - antes;
+	  textArea.append("Leituras com sucesso: "+sucesso+"\n");
+	  textArea.append("Leituras sem sucesso: "+falha+"\n");
+	  textArea.append("velocidade de leitura: "+ (sucesso+falha)/((double)(System.currentTimeMillis() - antes)/1000)+" leituras por segundo\n");
+	  textArea.append("Taxa de sucesso: "+(double)(sucesso)/(sucesso+falha)+"\n");
 	
 }
 
