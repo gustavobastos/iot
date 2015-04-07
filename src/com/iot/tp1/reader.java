@@ -71,7 +71,7 @@ public class reader {
 					//textArea.append("------------------------------------------------------------------\n");
 					for (int i=0; i<tagList.length; i++) {
 						Tag tag = tagList[i];
-						textArea.append("ID: " + tag.getTagID()+" "+ tag.getClass() +"\n");
+						textArea.append("ID: " + tag.getTagID()+"\n");
 					}
 					//Thread.sleep(1000);
 					sucesso++;
